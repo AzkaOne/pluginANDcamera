@@ -1,0 +1,1 @@
+1.![hasil pratikum](image.png)
