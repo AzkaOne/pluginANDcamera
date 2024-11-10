@@ -1,5 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:myplugin/widget/displaypicture_screen.dart';
 
 class TakepictureScreen extends StatefulWidget {
   const TakepictureScreen({Key? key, required this.camera}) : super(key: key);
@@ -49,6 +51,14 @@ class TakepictureScreenState extends State<TakepictureScreen> {
             await _initializeControllerFuture;
             final image = await _controller.takePicture();
             // Navigator.pop(context, image.path);
+            final bytes = await image.readAsBytes();
+            if (!mounted) return;
+
+            await Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => DisplaypictureScreen(
+                      imageBytes: bytes,
+                      // imagePath: image.path,
+                    )));
           } catch (e) {
             print(e);
           }

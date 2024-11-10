@@ -4,6 +4,7 @@ import 'package:myplugin/widget/takepicture_screen.dart';
 // import 'package:myplugin/red_text_widget.dart';
 
 Future<void> main() async {
+  
   WidgetsFlutterBinding.ensureInitialized();
   final cameras = await availableCameras();
   final firstCamera = cameras.first;
